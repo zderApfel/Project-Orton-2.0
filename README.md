@@ -25,11 +25,9 @@ as you also used your inside knowledge to jailbreak the FreedomNet, creating the
 l0lznet, which boasts high resistance to government overreach and surveilance, enabling the 
 distribution of illicit products, services, and ideas
 
-**
-The game's story as it's written here will be split into chapters to track major story progress 
+**The game's story as it's written here will be split into chapters to track major story progress 
 when actually getting to designing the game. Most chapters will allow further access to certain game
-world and gameplay elements either at the start or on their completion
-**
+world and gameplay elements either at the start or on their completion**
 
 ### Prologue
 
@@ -44,7 +42,7 @@ However, it's not over for you. Some of your contacts from the outside need your
 a breakout is in order. The Prologue will serve as a gameplay tutorial, and can be skipped
 on creating a file or going to new game plus, if so desired
 
-
+### Chapter 1
 
 ## Gameplay
 
