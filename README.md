@@ -98,24 +98,23 @@ their character to customize a favored fighting style
 
 ### Controls
 
-NOTE: By default, Primary = Right hand and Secondary = Left hand, however the player's primary
-hand can be changed if so desired
-
 - WASD/L. Stick: Movement
 - Mouse/R. Stick: Aiming
 - M1/R. Trigger: Use Primary Weapon
 - M2/L. Trigger: Use Secondary Weapon/Secondary Action
 - Space/A: Jump/Climb
-- Shift/Depress L. Stick: Sprint
+- Shift/Depress R. Stick: Sprint
 - V/B: Dodge
-- C/Depress R. Stick: Crouch
+- C/Depress L. Stick: Crouch
 - E/Y: Interact
 - R/X: Reload Ranged Weapons
 - Tab/Select: Open Inventory
 - ESC/Start: Pause Game
-- 1/L. Bumper: Ablity 1
-- 2/R. Bumper: Ability 2
+- 1/R. Bumper: Ablity 1
+- 2/L. Bumper: Ability 2
 	- Both can be pressed at once for Ability 3
+- 4/D-pad Up: Equipment
+- Brackets/D-Pad Left/Right: Cycle Equipment
 
 
 ### Fighting Styles and their Skill Trees
@@ -125,19 +124,97 @@ The player can equip two one-handed weapons in either hand, or one two-handed we
 Depending on the weapons equipped, your character will adopt a different fighting style. When any
 given fighting style is equipped, controls will adapt to the specific abilities that this style gains
 
-Each fighting style has different upgrade trees that can be unlocked with experience levels
+Each fighting style has an upgrade tree to enhance its abilities and provide passive benefits 
+
+Almost all abilities have cooldowns, but some have a stamina cost instead.
 
 #### Unarmed
 
-Requirements: Empty hands
+**Requirements:** Empty hands
 
+**Secondary?:** Block - Block melee attacks and parry with good timing. Has heavy chip damage
+against any weapon that's not fists, except when parrying
+**Ability 1:** Kick; stamina - Heavy Poise damage, can be charged
+**Ability 2:** Uppercut; stamina - A heavy punch that does more health damage, has a windup
+**Ability 3:** Dropkick; stamina - Heavy poise damage, must be midair to execute
 
 #### Light Melee
 
+**Requirements:** A one-handed melee weapon 
+
+**Secondary?:** Block - Block melee attacks and parry with good timing. Has light chip damage when
+blocking.
+	If secondary hand is occupied, then this is replaced with the other weapon's primary action
+**Ability 1:** Windup; stamina - Wind up a heavy strike that does increased poise and health damage
+**Ability 2:** Pommel Strike; stamina  - Do a quick strike with the base of the weapon
+that does increased poise damage but reduces health damage
+**Ability 3:** Mortal Blow; stamina AND cooldown - When aiming at an enemy with empty poise, 
+deal a devastating finishing blow. Against bosses, this eliminates a percentage of their hit points
+
 #### Dual Melee
+
+**Requirements:** A one-handed melee weapon in each hand
+
+**Secondary?:** Block - Block melee attacks and parry with good timing. Has light chip damage
+when blocking
+**Ability 1:** Double Slash; stamina - Slash with both weapons in an X pattern while
+quickly backstepping
+**Ability 2:** Cheetah Pounce; stamina AND cooldown - Leap forward, slashing both weapons at 
+the end of the arc
+**Ability 3:** Pitchfork; stamina AND cooldown - Dash forward with both weapons pointed outward. 
+Instantly kills enemies that are out of poise, and instead deals percentage damage against bosses
 
 #### Heavy Melee
 
-#### Firearms
+**Requirements:** A two-handed melee weapon
 
-### Weapons
+**Secondary?:** Block - Block melee attacks and parry with good timing. Has no chip damage when
+blocking
+**Ability 1:** Ground Slam; stamina AND cooldown - Slam the ground full force. Enemies within a 
+radius have a chance to be briefly stunned
+**Ability 2:** Pommel Strike; stamina - Do a quick strike with the base of the weapon that does increased
+poise damage but reduces health damage
+**Ability 3:** Displacing Strike; stamina AND cooldown - Wind up an underhand swing. If the enemy
+is out of poise, they get flung where you're aiming, dealing damage to foes they collide with as well
+
+#### Gun Kata
+
+**Requirements:** At least one pistol, a submachine gun, or an assault rifle
+
+**Secondary?** Quick Melee - Make a quick melee strike with one of your guns. Can be chained
+if dual wielding pistols
+**Ability 1:** Richochet; cooldown - Fire a focused round that richochets off of the first surface hit. 
+Targets hit by richochet bullets have a chance to deal a critical hit.
+**Ability 2:** Throw Magazine; cooldown - Throw a magazine for your weapon to a point. Dodge through
+the magazine to reload your weapon instantly. If the magazine hits a foe, it deals a small
+amount of poise damage with a chance to stagger
+**Ability 3:** Hail of Lead; stamina - Use your remaining ammo to fire a volley of rounds in an arc in front
+of you. The frequency of fire while arcing is tied directly to remaining loaded ammunition
+
+
+#### Enforcement
+
+**Requirements:** A shotgun
+
+**Secondary?** Quick Melee - Make a quick melee strike with your shotgun
+**Ability 1:** Slam Fire; stamina - While held down, fire shells with greater speed but with 
+increased pellet spread and recoil
+**Ability 2:** Quick Load; stamina - After firing a round, activate this ability at the right time to quickly
+load another shell into the breach of the shotgun
+**Ability 3:** Flash Round; cooldown - Load a flashbang round into the shotgun. The next shot 
+acts as a less effective flashbang, with reduced stun duration and area of effect radius
+
+
+#### Marksmanship
+
+**Requirements:** A marksman or sniper rifle
+
+**Secondary?** Scope - Aim down the rifle's scope or sight. Shots fired while aiming have
+critical hit chance
+**Ability 1:** Hold Breath; stamina - Hold your breath while held, at the cost of stamina, which
+steadies your aim. Movement speed is reduced while holding breath
+**Ability 2:** Scout's Stim; cooldown - Inject yourself with a stim that increases maximum stamina
+and movement speed for a time
+**Ability 3:** Tracking Round; cooldown - Load a tracking round into your rifle. If the next shot 
+strikes a foe, themselves and any friendly foes in a radius around them are highlighted for 
+you for a time
