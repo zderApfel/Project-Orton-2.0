@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgoiq1t8xy7oq"]
+
+[ext_resource type="PackedScene" uid="uid://bavwxjpcrpntm" path="res://classes/PhysicsObject.tscn" id="1_w18rx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7af6v"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tw5tg"]
+
+[node name="PhysicsObject" instance=ExtResource("1_w18rx")]
+item_name = "Dingdong"
+
+[node name="MeshInstance3D" parent="RigidBody3D" index="0"]
+layers = 9
+mesh = SubResource("SphereMesh_7af6v")
+
+[node name="CollisionShape3D" parent="RigidBody3D" index="1"]
+shape = SubResource("SphereShape3D_tw5tg")
