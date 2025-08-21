@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dls7cli3wcuey"]
+[gd_scene load_steps=9 format=3 uid="uid://dls7cli3wcuey"]
 
 [ext_resource type="PackedScene" uid="uid://dgoiq1t8xy7oq" path="res://objects/Dingdong.tscn" id="1_7c1qw"]
+[ext_resource type="PackedScene" uid="uid://hs8jrebyvwxn" path="res://objects/Player.tscn" id="2_i7llj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nu7tq"]
 sky_top_color = Color(0.36111, 0.615038, 0.927899, 1)
@@ -30,9 +31,6 @@ environment = SubResource("Environment_i7llj")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0684854, 0.997652, 0, -0.997652, -0.0684854, 0, 7.8334, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.937002, 0.349324, 0, -0.349324, 0.937002, 0, 1.20184, 2.06006)
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_74u7v")
 surface_material_override/0 = SubResource("StandardMaterial3D_cjeqb")
@@ -43,3 +41,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_cjeqb")
 shape = SubResource("ConvexPolygonShape3D_y4ur2")
 
 [node name="PhysicsObject" parent="." instance=ExtResource("1_7c1qw")]
+
+[node name="Player" parent="." instance=ExtResource("2_i7llj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95434, 2.69066)
