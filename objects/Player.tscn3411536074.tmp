@@ -13,18 +13,8 @@ script/source = "extends Node
 @onready var inventory: Array[Item]
 
 func _physics_process(delta) -> void:
-	_loot()
-
-func _loot() -> void:
-	var object = %PlayerLineOfSight.get_collider()
-	if %PlayerLineOfSight.is_colliding() and object is Item:
-		if object.lootable: 
-			%InteractLabel.visible = true
-			if Input.is_action_just_released(\"interact\"):
-				print(object.item_name)
-			
-	else:
-		if %InteractLabel.visible: %InteractLabel.visible = false
+	if %PlayerLineOfSight.is_colliding() and %PlayerLineOfSight.get_collider() is Item:
+		print(\"Hi :)\")
 "
 
 [node name="Player" type="CharacterBody3D"]
@@ -52,8 +42,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 target_position = Vector3(0, -2, 0)
 debug_shape_custom_color = Color(0, 0, 0.752941, 1)
 
-[node name="InteractLabel" type="Label" parent="Head"]
-unique_name_in_owner = true
+[node name="Label" type="Label" parent="Head"]
 visible = false
 anchors_preset = -1
 anchor_left = 0.444

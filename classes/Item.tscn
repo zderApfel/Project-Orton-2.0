@@ -2,5 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c5t4pp0jbvumt" path="res://classes/scripts/item.gd" id="1_6vfi4"]
 
-[node name="Item" type="Node3D"]
+[node name="Item" type="RigidBody3D"]
 script = ExtResource("1_6vfi4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -12,19 +12,9 @@ script/source = "extends Node
 
 @onready var inventory: Array[Item]
 
-func _physics_process(delta) -> void:
-	_loot()
-
-func _loot() -> void:
-	var object = %PlayerLineOfSight.get_collider()
-	if %PlayerLineOfSight.is_colliding() and object is Item:
-		if object.lootable: 
-			%InteractLabel.visible = true
-			if Input.is_action_just_released(\"interact\"):
-				print(object.item_name)
-			
-	else:
-		if %InteractLabel.visible: %InteractLabel.visible = false
+func _process() -> void:
+	if Input.is_action_just_released(\"interact\"):
+		pass
 "
 
 [node name="Player" type="CharacterBody3D"]
@@ -52,18 +42,26 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 target_position = Vector3(0, -2, 0)
 debug_shape_custom_color = Color(0, 0, 0.752941, 1)
 
-[node name="InteractLabel" type="Label" parent="Head"]
-unique_name_in_owner = true
-visible = false
-anchors_preset = -1
-anchor_left = 0.444
-anchor_top = 0.461
-anchor_right = 0.556
-anchor_bottom = 0.539
-offset_left = -0.488037
-offset_top = 0.271973
-offset_right = 0.487915
-offset_bottom = -0.272034
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 1.667
+anchor_bottom = 1.667
+offset_right = -0.384033
+offset_bottom = -0.216064
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.5
+offset_right = 20.0
+offset_bottom = 8.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50

@@ -11,8 +11,16 @@ const SENSITIVITY = 0.0015
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 
+#Footstep variables
+const BOB_FREQ = 2.4
+const BOB_AMP = 0.08
+var t_step = 0.0
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+# Disables the camera aiming for using the mouse for other purposes
+var camera_enabled: bool = true
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
@@ -23,7 +31,7 @@ func _ready():
 
 
 func _unhandled_input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and camera_enabled:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(75))
@@ -59,8 +67,24 @@ func _physics_process(delta):
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
-	footsteps()
-	move_and_slide()
+	t_step += delta * velocity.length() * float(is_on_floor())
+	camera.transform.origin = _footsteps(t_step)
 	
-func footsteps() -> void:
-	pass
+	pause()
+	move_and_slide()
+		
+func pause() -> void: 
+	if Input.is_action_just_released("pause"):
+		if Input.mouse_mode == 2:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+		elif Input.mouse_mode == 3:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		
+		camera_enabled = Helpers.boolflip(camera_enabled)	
+		print(camera_enabled)
+
+func _footsteps(time) -> Vector3:
+	var pos = Vector3.ZERO
+	pos.y = sin(time * BOB_FREQ) * BOB_AMP
+	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
+	return pos

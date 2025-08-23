@@ -1,1 +1,1 @@
-class_name PhysicsObject extends Item
+extends Item

@@ -13,18 +13,14 @@ script/source = "extends Node
 @onready var inventory: Array[Item]
 
 func _physics_process(delta) -> void:
-	_loot()
-
-func _loot() -> void:
-	var object = %PlayerLineOfSight.get_collider()
-	if %PlayerLineOfSight.is_colliding() and object is Item:
-		if object.lootable: 
+	if %PlayerLineOfSight.is_colliding() and %PlayerLineOfSight.get_collider():
+		%InteractLabel.visible = 
+		if !%InteractLabel.visible:
 			%InteractLabel.visible = true
-			if Input.is_action_just_released(\"interact\"):
-				print(object.item_name)
-			
+		else:
+			%InteractLabel.visible = false
 	else:
-		if %InteractLabel.visible: %InteractLabel.visible = false
+		
 "
 
 [node name="Player" type="CharacterBody3D"]
