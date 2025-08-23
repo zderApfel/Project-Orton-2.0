@@ -14,8 +14,8 @@ bounce = 0.42
 [node name="Item" instance=ExtResource("1_fog3p")]
 mass = 56.235
 physics_material_override = SubResource("PhysicsMaterial_fog3p")
-item_name = "Dingdong"
-lootable = true
+Item_Name = "Dingdong"
+Lootable = true
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

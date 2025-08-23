@@ -41,7 +41,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	if Input.is_action_just_pressed("jump_climb") and is_on_floor():
+	if Input.is_action_just_pressed("jump_climb") and is_on_floor() and camera_enabled:
 		velocity.y = JUMP_VELOCITY
 	
 	if Input.is_action_pressed("sprint"):
@@ -53,12 +53,16 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var direction = (head.transform.basis * transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if is_on_floor():
-		if direction:
-			velocity.x = direction.x * speed
-			velocity.z = direction.z * speed
+		if camera_enabled:
+			if direction:
+				velocity.x = direction.x * speed
+				velocity.z = direction.z * speed
+			else:
+				velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
+				velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
 		else:
-			velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
-			velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
+			velocity.x = 0
+			velocity.z = 0
 	else:
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)

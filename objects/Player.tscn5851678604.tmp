@@ -10,29 +10,28 @@
 resource_name = "inventory"
 script/source = "extends Node
 
-@onready var Inventory: Array[Item]
+@onready var inventory: Array[Item]
 
 func _physics_process(delta) -> void:
-	_access()
 	_loot()
-
-func _access() -> void:
-	if Input.is_action_just_released(\"inventory\"): print(Inventory)
 
 func _loot() -> void:
 	var object = %PlayerLineOfSight.get_collider()
+	var copy
 	if %PlayerLineOfSight.is_colliding() and object is Item:
-		if object.Lootable: 
-			%InteractLabel.text = \"Loot\"
+		if object.lootable: 
 			%InteractLabel.visible = true
 			if Input.is_action_just_released(\"interact\"):
-				Helpers.store_item(object, Inventory)
+				copy = object.duplicate()
+				print(copy.item_name)
+			
 	else:
 		if %InteractLabel.visible: %InteractLabel.visible = false
 "
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_8ak8y")
+entity_name = "Player"
 metadata/_custom_type_script = "uid://cac7ruhbirfl0"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -3,4 +3,4 @@
 
 class_name Entity extends CharacterBody3D
 
-@export var entity_name: String
+@export var Entity_Name: String

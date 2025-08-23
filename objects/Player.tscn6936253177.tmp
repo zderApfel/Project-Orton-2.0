@@ -13,20 +13,18 @@ script/source = "extends Node
 @onready var Inventory: Array[Item]
 
 func _physics_process(delta) -> void:
-	_access()
 	_loot()
-
-func _access() -> void:
-	if Input.is_action_just_released(\"inventory\"): print(Inventory)
 
 func _loot() -> void:
 	var object = %PlayerLineOfSight.get_collider()
+	var copy
 	if %PlayerLineOfSight.is_colliding() and object is Item:
 		if object.Lootable: 
 			%InteractLabel.text = \"Loot\"
 			%InteractLabel.visible = true
 			if Input.is_action_just_released(\"interact\"):
-				Helpers.store_item(object, Inventory)
+
+				Inventory.append(copy)
 	else:
 		if %InteractLabel.visible: %InteractLabel.visible = false
 "

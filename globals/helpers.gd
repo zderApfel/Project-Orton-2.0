@@ -6,3 +6,9 @@ static func boolflip(boolean: bool) -> bool:
 		return false
 	else:
 		return true
+
+static func store_item(item: Item, inventory: Array) -> void:
+	var copy = item.duplicate()
+	print(copy.Item_Name+" looted")
+	inventory.append(copy)
+	item.queue_free()
