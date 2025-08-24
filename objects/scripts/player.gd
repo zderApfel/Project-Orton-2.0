@@ -20,6 +20,7 @@ var t_step = 0.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 # Disables the camera aiming for using the mouse for other purposes
+# Usually only happens when game is paused 
 var camera_enabled: bool = true
 
 @onready var head = $Head
@@ -74,18 +75,16 @@ func _physics_process(delta):
 	t_step += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _footsteps(t_step)
 	
-	pause()
+	if Input.is_action_just_released("pause"): pause()
 	move_and_slide()
 		
 func pause() -> void: 
-	if Input.is_action_just_released("pause"):
-		if Input.mouse_mode == 2:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-		elif Input.mouse_mode == 3:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if Input.mouse_mode == 2:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	elif Input.mouse_mode == 3:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		
-		camera_enabled = Helpers.boolflip(camera_enabled)	
-		print(camera_enabled)
+	camera_enabled = Helpers.boolflip(camera_enabled)	
 
 func _footsteps(time) -> Vector3:
 	var pos = Vector3.ZERO

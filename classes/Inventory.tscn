@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgv8aawkvnohp"]
+
+[ext_resource type="Script" uid="uid://de402k2sqqgdj" path="res://classes/scripts/inventory.gd" id="1_wqnay"]
+
+[node name="Inventory" type="Node"]
+script = ExtResource("1_wqnay")

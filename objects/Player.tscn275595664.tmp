@@ -1,20 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://hs8jrebyvwxn"]
+[gd_scene load_steps=5 format=3 uid="uid://hs8jrebyvwxn"]
 
 [ext_resource type="Script" uid="uid://bbma8u4fp8oou" path="res://objects/scripts/player.gd" id="1_8ak8y"]
-[ext_resource type="PackedScene" uid="uid://bgv8aawkvnohp" path="res://classes/Inventory.tscn" id="2_gndvh"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8ak8y"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gndvh"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gndvh"]
-bg_color = Color(0.233925, 0.233925, 0.233925, 1)
-border_width_left = 5
-border_width_top = 7
-border_width_right = 5
-border_width_bottom = 7
-border_color = Color(0.259493, 0.547851, 0.548582, 1)
-shadow_size = 12
+[sub_resource type="GDScript" id="GDScript_8ak8y"]
+resource_name = "inventory"
+script/source = "extends Node
+
+@onready var Inventory: Array[Item]
+
+func _physics_process(delta) -> void:
+	_access()
+	_loot()
+
+func _access() -> void:
+	if Input.is_action_just_released(\"inventory\"): print(Inventory)
+
+func _loot() -> void:
+	var object = %PlayerLineOfSight.get_collider()
+	if %PlayerLineOfSight.is_colliding() and object is Item:
+		if object.Lootable: 
+			%InteractLabel.text = \"Loot\"
+			%InteractLabel.visible = true
+			if Input.is_action_just_released(\"interact\"):
+				Helpers.store_item(object, self)
+	else:
+		if %InteractLabel.visible: %InteractLabel.visible = false
+"
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_8ak8y")
@@ -25,6 +40,9 @@ mesh = SubResource("CapsuleMesh_8ak8y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_gndvh")
+
+[node name="Inventory" type="Node" parent="."]
+script = SubResource("GDScript_8ak8y")
 
 [node name="Head" type="Node3D" parent="."]
 
@@ -39,6 +57,7 @@ debug_shape_custom_color = Color(0, 0, 0.752941, 1)
 
 [node name="InteractLabel" type="Label" parent="Head"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = -1
 anchor_left = 0.444
 anchor_top = 0.461
@@ -51,23 +70,4 @@ offset_bottom = -0.272034
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
-text = "test"
-
-[node name="InventoryScreen" type="Panel" parent="Head"]
-unique_name_in_owner = true
-visible = false
-z_index = 1
-anchors_preset = -1
-anchor_left = 0.287
-anchor_top = 0.049
-anchor_right = 0.713
-anchor_bottom = 0.951
-offset_left = 0.376007
-offset_top = -0.252001
-offset_right = -0.376099
-offset_bottom = 0.251953
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_gndvh")
-
-[node name="Inventory" parent="." instance=ExtResource("2_gndvh")]
+text = "Loot"
