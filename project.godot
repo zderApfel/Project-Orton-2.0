@@ -21,7 +21,8 @@ folder_colors={
 "res://assets/": "red",
 "res://classes/": "orange",
 "res://globals/": "green",
-"res://objects/": "yellow"
+"res://objects/": "yellow",
+"res://ui/": "teal"
 }
 
 [gui]

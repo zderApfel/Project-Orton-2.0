@@ -1,14 +1,14 @@
-class_name Inventory extends Node
+extends Node
 
 @onready var Items: Array[Item]
 
 @export var Is_Open: bool = false
 
 func _physics_process(delta) -> void:
-	_access()
-	_loot()
+	access()
+	loot()
 
-func _access() -> void:
+func access() -> void:
 	if Input.is_action_just_released("inventory"): 
 		Is_Open = Helpers.boolflip(Is_Open)
 		get_parent().pause()
@@ -18,13 +18,13 @@ func _access() -> void:
 	else:
 		%InventoryScreen.visible = false
 
-func _loot() -> void:
+func loot() -> void:
 	var object = %PlayerLineOfSight.get_collider()
 	if %PlayerLineOfSight.is_colliding() and object is Item:
 		if object.Lootable: 
 			%InteractLabel.text = "Loot"
 			%InteractLabel.visible = true
 			if Input.is_action_just_released("interact"):
-				Helpers.store_item(object, self)
+				Helpers.store_item(object, Items, %ItemUI)
 	else:
 		if %InteractLabel.visible: %InteractLabel.visible = false

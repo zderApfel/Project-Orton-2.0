@@ -7,8 +7,10 @@ static func boolflip(boolean: bool) -> bool:
 	else:
 		return true
 
-static func store_item(item: Item, inventory: Inventory) -> void:
+static func store_item(item: Item, inventory: Array[Item], ui: VBoxContainer) -> void:
 	var copy = item.duplicate()
 	print(copy.Item_Name+" looted")
-	inventory.Items.append(copy)
+	var new_entry = InventoryEntry.new(copy)
+	ui.add_child(InventoryEntry.new(copy))
+	inventory.append(copy)
 	item.queue_free()

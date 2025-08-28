@@ -1,5 +1,6 @@
 extends Entity
 
+## This will be changed once attributes/leveling is introduced
 var speed
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
@@ -19,12 +20,12 @@ var t_step = 0.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-# Disables the camera aiming for using the mouse for other purposes
+# Disables the Camera aiming for using the mouse for other purposes
 # Usually only happens when game is paused 
-var camera_enabled: bool = true
+var Is_Paused: bool = true
 
-@onready var head = $Head
-@onready var camera = $Head/Camera3D
+@onready var Head = $Head
+@onready var Camera = $Head/Camera3D
 
 
 func _ready():
@@ -32,17 +33,17 @@ func _ready():
 
 
 func _unhandled_input(event):
-	if event is InputEventMouseMotion and camera_enabled:
-		head.rotate_y(-event.relative.x * SENSITIVITY)
-		camera.rotate_x(-event.relative.y * SENSITIVITY)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(75))
+	if event is InputEventMouseMotion and Is_Paused:
+		Head.rotate_y(-event.relative.x * SENSITIVITY)
+		Camera.rotate_x(-event.relative.y * SENSITIVITY)
+		Camera.rotation.x = clamp(Camera.rotation.x, deg_to_rad(-60), deg_to_rad(75))
 
 
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	if Input.is_action_just_pressed("jump_climb") and is_on_floor() and camera_enabled:
+	if Input.is_action_just_pressed("jump_climb") and is_on_floor() and Is_Paused:
 		velocity.y = JUMP_VELOCITY
 	
 	if Input.is_action_pressed("sprint"):
@@ -52,9 +53,9 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	var direction = (head.transform.basis * transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction = (Head.transform.basis * transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if is_on_floor():
-		if camera_enabled:
+		if Is_Paused:
 			if direction:
 				velocity.x = direction.x * speed
 				velocity.z = direction.z * speed
@@ -70,21 +71,22 @@ func _physics_process(delta):
 
 	var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
-	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
+	Camera.fov = lerp(Camera.fov, target_fov, delta * 8.0)
 	
 	t_step += delta * velocity.length() * float(is_on_floor())
-	camera.transform.origin = _footsteps(t_step)
+	Camera.transform.origin = _footsteps(t_step)
 	
 	if Input.is_action_just_released("pause"): pause()
 	move_and_slide()
-		
+
+## A basic "pause" for the game for accessing UIs while disallowing movement of character
 func pause() -> void: 
 	if Input.mouse_mode == 2:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	elif Input.mouse_mode == 3:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		
-	camera_enabled = Helpers.boolflip(camera_enabled)	
+	Is_Paused = Helpers.boolflip(Is_Paused)	
 
 func _footsteps(time) -> Vector3:
 	var pos = Vector3.ZERO
