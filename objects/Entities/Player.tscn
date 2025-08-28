@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://hs8jrebyvwxn"]
 
-[ext_resource type="Script" uid="uid://bbma8u4fp8oou" path="res://objects/scripts/player.gd" id="1_8ak8y"]
-[ext_resource type="Script" uid="uid://bru7sghk2sxqp" path="res://objects/scripts/player_inventory.gd" id="2_gndvh"]
+[ext_resource type="Script" uid="uid://bbma8u4fp8oou" path="res://objects/Entities/scripts/player.gd" id="1_8ak8y"]
+[ext_resource type="Script" uid="uid://bru7sghk2sxqp" path="res://objects/Entities/scripts/player_inventory.gd" id="2_gndvh"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8ak8y"]
 
@@ -37,7 +37,12 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 target_position = Vector3(0, -2, 0)
 debug_shape_custom_color = Color(0, 0, 0.752941, 1)
 
-[node name="InteractLabel" type="Label" parent="Head"]
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("2_gndvh")
+
+[node name="PlayerUI" type="Node" parent="."]
+
+[node name="InteractLabel" type="Label" parent="PlayerUI"]
 unique_name_in_owner = true
 visible = false
 anchors_preset = -1
@@ -46,15 +51,15 @@ anchor_top = 0.461
 anchor_right = 0.556
 anchor_bottom = 0.539
 offset_left = -0.488037
-offset_top = 0.271973
-offset_right = 0.487915
-offset_bottom = -0.272034
+offset_top = 0.271942
+offset_right = 115.032
+offset_bottom = 47.1519
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 text = "test"
 
-[node name="InventoryScreen" type="Panel" parent="Head"]
+[node name="InventoryScreen" type="Panel" parent="PlayerUI"]
 unique_name_in_owner = true
 z_index = 1
 anchors_preset = -1
@@ -64,13 +69,13 @@ anchor_right = 0.713
 anchor_bottom = 0.951
 offset_left = 0.376007
 offset_top = -0.252001
-offset_right = 9.62402
+offset_right = 9.62408
 offset_bottom = 15.252
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gndvh")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Head/InventoryScreen"]
+[node name="ScrollContainer" type="ScrollContainer" parent="PlayerUI/InventoryScreen"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.026
@@ -83,11 +88,17 @@ offset_bottom = -0.100037
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ItemUI" type="VBoxContainer" parent="Head/InventoryScreen/ScrollContainer"]
+[node name="ItemUI" type="VBoxContainer" parent="PlayerUI/InventoryScreen/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Inventory" type="Node" parent="."]
-script = ExtResource("2_gndvh")
+[node name="Coords" type="Label" parent="PlayerUI"]
+unique_name_in_owner = true
+offset_right = 216.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.713726, 0.796078, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "<Coords>"
+horizontal_alignment = 1

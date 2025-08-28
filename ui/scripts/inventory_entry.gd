@@ -1,13 +1,12 @@
 class_name InventoryEntry extends Button
 
-## The item stored in the entry
+## The item stored in the entry. Has to be lowercase due to my dumb naming conventions
 @onready var item: Item
 
-func _init(x: Item) -> void:
+func activate(x: Item) -> void:
 	item = x
 	self.text = item.Item_Name
-	self.pressed.connect(_on_pressed)
-
-
+	if item.Inv_Icon != null: $Icon.texture = load(item.Inv_Icon)
+	
 func _on_pressed() -> void:
 	print(item.Item_Name)

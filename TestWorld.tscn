@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dls7cli3wcuey"]
+[gd_scene load_steps=10 format=3 uid="uid://dls7cli3wcuey"]
 
-[ext_resource type="PackedScene" uid="uid://dvigepomy4fx3" path="res://objects/Dingdong.tscn" id="1_7c1qw"]
-[ext_resource type="PackedScene" uid="uid://hs8jrebyvwxn" path="res://objects/Player.tscn" id="2_i7llj"]
+[ext_resource type="PackedScene" uid="uid://dvigepomy4fx3" path="res://objects/Items/Dingdong.tscn" id="1_7c1qw"]
+[ext_resource type="Script" uid="uid://bqfxblpco14hc" path="res://test_world.gd" id="1_74u7v"]
+[ext_resource type="PackedScene" uid="uid://hs8jrebyvwxn" path="res://objects/Entities/Player.tscn" id="2_i7llj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nu7tq"]
 sky_top_color = Color(0.36111, 0.615038, 0.927899, 1)
@@ -24,6 +25,7 @@ albedo_color = Color(0.304616, 0.593582, 0.333491, 1)
 size = Vector3(20, 0.001, 20)
 
 [node name="TestWorld" type="Node3D"]
+script = ExtResource("1_74u7v")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_i7llj")
@@ -31,19 +33,18 @@ environment = SubResource("Environment_i7llj")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0684854, 0.997652, 0, -0.997652, -0.0684854, 0, 7.8334, 0)
 
-[node name="PhysicsObject_RigidBody3D#MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("PlaneMesh_74u7v")
 surface_material_override/0 = SubResource("StandardMaterial3D_cjeqb")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="PhysicsObject_RigidBody3D#MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsObject_RigidBody3D#MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
 shape = SubResource("BoxShape3D_i7llj")
 
 [node name="Player" parent="." instance=ExtResource("2_i7llj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95434, 2.69066)
 
 [node name="Item" parent="." instance=ExtResource("1_7c1qw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75328, 0)
-mass = 50.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.417493, -2.75188)

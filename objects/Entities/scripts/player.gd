@@ -40,6 +40,7 @@ func _unhandled_input(event):
 
 
 func _physics_process(delta):
+	%Coords.text = str(position.round())
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 

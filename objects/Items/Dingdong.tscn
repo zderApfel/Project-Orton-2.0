@@ -16,6 +16,7 @@ mass = 56.235
 physics_material_override = SubResource("PhysicsMaterial_fog3p")
 Item_Name = "Dingdong"
 Lootable = true
+Inv_Icon = "res://icon.svg"
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

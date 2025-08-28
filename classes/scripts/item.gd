@@ -5,3 +5,6 @@ class_name Item extends RigidBody3D
 
 ## Whether or not the item is lootable if it exists in the world
 @export var Lootable: bool
+
+## The filepath to the item's inventory icon
+@export var Inv_Icon: String
