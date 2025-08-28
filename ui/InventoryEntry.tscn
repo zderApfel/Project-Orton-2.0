@@ -4,9 +4,9 @@
 
 [node name="InventoryEntry" type="Button"]
 anchors_preset = -1
-anchor_right = 0.391
+anchor_right = 0.43
 anchor_bottom = 0.154
-offset_right = -0.432037
+offset_right = -45.36
 offset_bottom = 0.207993
 grow_horizontal = 2
 grow_vertical = 2
@@ -27,4 +27,4 @@ offset_bottom = 20.0
 grow_vertical = 2
 expand_mode = 1
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
