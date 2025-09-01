@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfxb6thy8rn54"]
+
+[ext_resource type="Script" uid="uid://b7u3m5qxttkcr" path="res://ui/scripts/inventory_entry.gd" id="1_ib6fr"]
+
+[node name="InventoryEntry" type="Button"]
+anchors_preset = -1
+anchor_right = 0.43
+anchor_bottom = 0.154
+offset_right = -45.36
+offset_bottom = 0.207993
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "<Item_Name>"
+alignment = 2
+script = ExtResource("1_ib6fr")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 36.0
+offset_top = -20.0
+offset_right = 76.0
+offset_bottom = 20.0
+grow_vertical = 2
+expand_mode = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -24,7 +24,7 @@ albedo_color = Color(0.304616, 0.593582, 0.333491, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_i7llj"]
 size = Vector3(20, 0.001, 20)
 
-[node name="TestWorld" type="Node3D"]
+[node name="World" type="Node3D"]
 script = ExtResource("1_74u7v")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

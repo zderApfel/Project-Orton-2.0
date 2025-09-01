@@ -117,7 +117,7 @@ their character to customize a favored fighting style
 - 2/L. Bumper: Ability 2
 	- Both can be pressed at once for Ability 3
 - Q/D-pad Up: Use equipment
-- Brackets/D-Pad Left/Right: Cycle Equipment
+- Brackets/D-Pad Left/Right: Cycle Loadout
 - F/D-pad Down: Swap weapons in hand
 
 

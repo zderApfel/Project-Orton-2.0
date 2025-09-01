@@ -18,6 +18,7 @@ func access() -> void:
 	else:
 		%InventoryScreen.visible = false
 
+
 func loot() -> void:
 	var object = %PlayerLineOfSight.get_collider()
 	if %PlayerLineOfSight.is_colliding() and object is Item:
