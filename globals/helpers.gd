@@ -12,6 +12,7 @@ static func boolflip(boolean: bool) -> bool:
 static func drop_item(item: Item, ui_element: InventoryEntry) -> void:
 	var copy = item.duplicate()
 	
+	copy.position.y = 1
 	get_world(ui_element).add_child(copy)
 	
 	ui_element.queue_free()
