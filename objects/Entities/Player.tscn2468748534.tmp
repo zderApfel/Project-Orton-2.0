@@ -37,9 +37,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 target_position = Vector3(0, -2, 0)
 debug_shape_custom_color = Color(0, 0, 0.752941, 1)
 
-[node name="DropPoint" type="Node3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.610621, -1.55873)
-
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("2_gndvh")
 
@@ -84,10 +81,10 @@ anchors_preset = -1
 anchor_left = 0.026
 anchor_top = 0.027
 anchor_right = 0.976
-anchor_bottom = 0.722
-offset_top = 0.799999
-offset_right = -9.15527e-05
-offset_bottom = -0.200043
+anchor_bottom = 0.861
+offset_top = 0.299999
+offset_right = -3.05176e-05
+offset_bottom = -0.100037
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -96,92 +93,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
-
-[node name="ArmSlots" type="HBoxContainer" parent="PlayerUI/InventoryScreen"]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 430.0
-offset_right = 494.0
-offset_bottom = 592.0
-
-[node name="Panel" type="Panel" parent="PlayerUI/InventoryScreen/ArmSlots"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Both_Hands" type="Container" parent="PlayerUI/InventoryScreen/ArmSlots/Panel"]
-layout_mode = 0
-offset_right = 160.0
-offset_bottom = 162.0
-
-[node name="Left_Hand" type="Container" parent="PlayerUI/InventoryScreen/ArmSlots/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.5
-anchor_bottom = 0.957
-offset_top = 0.5
-offset_right = 80.0
-offset_bottom = -73.534
-
-[node name="Right_Hand" type="Container" parent="PlayerUI/InventoryScreen/ArmSlots/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.5
-anchor_bottom = 0.957
-offset_top = 80.5
-offset_right = 80.0
-offset_bottom = 6.466
-
-[node name="Panel2" type="Panel" parent="PlayerUI/InventoryScreen/ArmSlots"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Both_Hands" type="Container" parent="PlayerUI/InventoryScreen/ArmSlots/Panel2"]
-offset_right = 160.0
-offset_bottom = 162.0
-
-[node name="Left_Hand" type="Container" parent="PlayerUI/InventoryScreen/ArmSlots/Panel2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.5
-anchor_bottom = 0.957
-offset_top = 0.5
-offset_right = 80.0
-offset_bottom = -73.534
-
-[node name="Right_Hand" type="Container" parent="PlayerUI/InventoryScreen/ArmSlots/Panel2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.5
-anchor_bottom = 0.957
-offset_top = 80.5
-offset_right = 80.0
-offset_bottom = 6.466
-
-[node name="Panel3" type="Panel" parent="PlayerUI/InventoryScreen/ArmSlots"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Both_Hands" type="Container" parent="PlayerUI/InventoryScreen/ArmSlots/Panel3"]
-offset_right = 160.0
-offset_bottom = 162.0
-
-[node name="Left_Hand" type="Container" parent="PlayerUI/InventoryScreen/ArmSlots/Panel3"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.5
-anchor_bottom = 0.957
-offset_top = 0.5
-offset_right = 80.0
-offset_bottom = -73.534
-
-[node name="Right_Hand" type="Container" parent="PlayerUI/InventoryScreen/ArmSlots/Panel3"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.5
-anchor_bottom = 0.957
-offset_top = 80.5
-offset_right = 80.0
-offset_bottom = 6.466
 
 [node name="Coords" type="Label" parent="PlayerUI"]
 unique_name_in_owner = true

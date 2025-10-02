@@ -1,4 +1,4 @@
-class_name Helpers
+class_name Helpers extends Node
 
 ## Changes bool from true to false, and vice versa
 static func boolflip(boolean: bool) -> bool:
@@ -11,20 +11,21 @@ static func boolflip(boolean: bool) -> bool:
 ## ui_element is the ui for the item in the inventory it is being removed from
 static func drop_item(item: Item, ui_element: InventoryEntry) -> void:
 	var copy = item.duplicate()
+	var drop_point = get_world(ui_element, "World/Player/Head/DropPoint")
 	
-	copy.position.y = 1
-	get_world(ui_element).add_child(copy)
-	
+	copy.position = drop_point.global_position
+	get_world(ui_element,"World").add_child(copy)
+
 	ui_element.queue_free()
 	item.queue_free()
 	
-	
-	print(copy.Item_Name+" dropped")
-	
 ## Returns the world environment
+## SELF is a node that acts as a sort of "gateway" to the world node
 ## Used for handling spawning in objects into the world	
-static func get_world(SELF: Node) -> Node:
-	return SELF.get_tree().get_root().get_node("World")	
+## Function doesn't work if the root of a world isn't named "World" lmao
+## Alternatively, you can use the optional parameter node_path to reparent differently
+static func get_world(SELF: Node, node_path: String = "World") -> Node:
+	return SELF.get_tree().get_root().get_node(node_path)	
 
 ##Input a filepath for a resource and return it
 static func loader(filepath: String) -> Resource:

@@ -27,10 +27,8 @@ var Is_Paused: bool = true
 @onready var Head = $Head
 @onready var Camera = $Head/Camera3D
 
-
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Is_Paused:
@@ -40,7 +38,8 @@ func _unhandled_input(event):
 
 
 func _physics_process(delta):
-	%Coords.text = str(position.round())
+	gVariables.player_position = global_position.round()
+	%Coords.text = str(gVariables.player_position)
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
