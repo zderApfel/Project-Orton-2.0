@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://du1rthlqisj0p"]
+
+[ext_resource type="PackedScene" uid="uid://82bnqcewn3jl" path="res://classes/MeleeWeapon.tscn" id="1_w2304"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vj5l8"]
+absorbent = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_vj5l8"]
+size = Vector3(1, 0.165, 0.155)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vj5l8"]
+points = PackedVector3Array(0.5, 0.0825, 0.0775, 0.5, 0.0825, -0.0775, -0.5, 0.0825, 0.0775, 0.5, -0.0825, 0.0775, 0.5, -0.0825, -0.0775, -0.5, 0.0825, -0.0775, -0.5, -0.0825, 0.0775, -0.5, -0.0825, -0.0775)
+
+[node name="MeleeWeapon" instance=ExtResource("1_w2304")]
+mass = 15.0
+physics_material_override = SubResource("PhysicsMaterial_vj5l8")
+Item_Name = "Wingerdinger"
+Lootable = true
+Inv_Icon = "res://icon.svg"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
+mesh = SubResource("BoxMesh_vj5l8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("ConvexPolygonShape3D_vj5l8")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dls7cli3wcuey"]
+[gd_scene load_steps=11 format=3 uid="uid://dls7cli3wcuey"]
 
 [ext_resource type="PackedScene" uid="uid://dvigepomy4fx3" path="res://objects/Items/Dingdong.tscn" id="1_7c1qw"]
 [ext_resource type="Script" uid="uid://bqfxblpco14hc" path="res://test_world.gd" id="1_74u7v"]
 [ext_resource type="PackedScene" uid="uid://hs8jrebyvwxn" path="res://objects/Entities/Player.tscn" id="2_i7llj"]
+[ext_resource type="PackedScene" uid="uid://du1rthlqisj0p" path="res://objects/Items/Melee Weapons/Wingdinger.tscn" id="4_cjeqb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nu7tq"]
 sky_top_color = Color(0.36111, 0.615038, 0.927899, 1)
@@ -47,4 +48,7 @@ shape = SubResource("BoxShape3D_i7llj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95434, 2.69066)
 
 [node name="Item" parent="." instance=ExtResource("1_7c1qw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.417493, -2.75188)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.232565, -2.89582)
+
+[node name="MeleeWeapon" parent="." instance=ExtResource("4_cjeqb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.105172, 0)

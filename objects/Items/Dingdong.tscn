@@ -1,15 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvigepomy4fx3"]
+[gd_scene load_steps=5 format=3 uid="uid://dvigepomy4fx3"]
 
 [ext_resource type="PackedScene" uid="uid://gnppxnyl7jbq" path="res://classes/Item.tscn" id="1_fog3p"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fog3p"]
 bounce = 0.42
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_v1y8r"]
+[sub_resource type="SphereMesh" id="SphereMesh_gbhd3"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_awyu6"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v1y8r"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_gbhd3"]
 
 [node name="Item" instance=ExtResource("1_fog3p")]
 mass = 56.235
@@ -18,11 +16,10 @@ Item_Name = "Dingdong"
 Lootable = true
 Inv_Icon = "res://icon.svg"
 
-[node name="CollisionShape3D" parent="." index="0"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-shape = SubResource("SphereShape3D_v1y8r")
+mesh = SubResource("SphereMesh_gbhd3")
 
-[node name="MeshInstance3D" parent="." index="1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-mesh = SubResource("SphereMesh_awyu6")
-surface_material_override/0 = SubResource("StandardMaterial3D_v1y8r")
+shape = SubResource("SphereShape3D_gbhd3")

@@ -7,10 +7,12 @@ static func boolflip(boolean: bool) -> bool:
 	else:
 		return true
 
+## Used for dropping items from inventories
 ## item is the item to be dropped
-## ui_element is the ui for the item in the inventory it is being removed from
+## ui_element is the ui for the item in the inventory it is being removed from	
 static func drop_item(item: Item, ui_element: InventoryEntry) -> void:
 	var copy = item.duplicate()
+	print("Dropping: "+copy.Item_Name)
 	var drop_point = get_world(ui_element, "World/Player/Head/DropPoint")
 	
 	copy.position = drop_point.global_position
@@ -43,6 +45,7 @@ static func store_item(item: Item, inventory: Array[Item], ui: VBoxContainer) ->
 	new_entry.activate(copy)
 	
 	print(copy.Item_Name+" looted")
+	copy.linear_velocity = Vector3.ZERO
 	ui.add_child(new_entry)
 	inventory.append(copy)
 	item.queue_free()
