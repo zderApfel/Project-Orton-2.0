@@ -75,8 +75,7 @@ func _physics_process(delta):
 	
 	t_step += delta * velocity.length() * float(is_on_floor())
 	Camera.transform.origin = _footsteps(t_step)
-	
-	if Input.is_action_just_released("pause"): pause()
+	if Is_Paused: if Input.is_action_just_pressed("pause"): pause()
 	move_and_slide()
 
 ## A basic "pause" for the game for accessing UIs while disallowing movement of character

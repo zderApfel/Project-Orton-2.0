@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://82bnqcewn3jl"]
+
+[ext_resource type="Script" uid="uid://bgx2mfgt2tbja" path="res://classes/scripts/melee_weapon.gd" id="1_i3w63"]
+
+[node name="MeleeWeapon" type="RigidBody3D"]
+script = ExtResource("1_i3w63")
+Item_Type = "Melee Weapon"
+metadata/_custom_type_script = "uid://c5t4pp0jbvumt"
